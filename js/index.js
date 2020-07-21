@@ -41,15 +41,15 @@ const tools = {
     class: Paragraph,
     inlineToolbar: true,
   },
-  image: {
-    class: ImageTool,
-    config: {
-      endpoints: {
-        byFile: "http://localhost:8008/uploadFile", // Your backend file uploader endpoint
-        byUrl: "http://localhost:8008/fetchUrl", // Your endpoint that provides uploading by Url
-      },
-    },
-  },
+  // image: {
+  //   class: ImageTool,
+  //   config: {
+  //     endpoints: {
+  //       byFile: "http://localhost:8008/uploadFile", // Your backend file uploader endpoint
+  //       byUrl: "http://localhost:8008/fetchUrl", // Your endpoint that provides uploading by Url
+  //     },
+  //   },
+  // },
 };
 
 const handleEditorJS = (event, postKey, data = {}) => {
@@ -88,12 +88,18 @@ const handleEventSaveButton = (event, postKey) => {
   cancelButton.style.display = "inline-block";
 };
 
+const verifyUrl = () => {
+  if (process.env.NODE_ENV === "development") {
+    return event.origin.startsWith("http://localhost:4200");
+  }
+  return (
+    event.origin.startsWith(process.env.PROD_DOMAIN) ||
+    event.origin.startsWith(process.env.STAGE_DOMAIN)
+  );
+};
+
 const receiveMessage = (event) => {
-  if (
-    event.origin.startsWith("http://localhost:4200") &&
-    event.data &&
-    event.data.postKey
-  ) {
+  if (verifyUrl() && event.data && event.data.postKey) {
     if (event.data.content) {
       handleEditorJS(event, event.data.postKey, event.data.content);
       return;
