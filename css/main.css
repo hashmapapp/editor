@@ -1,0 +1,159 @@
+/**
+ * Styles for the example page
+ */
+html {
+  background-color: ghostwhite;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  line-height: 1.5em;
+  margin: 0;
+}
+
+.class-button {
+  border: none;
+  font-weight: bold;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 15px;
+  width: 100%;
+
+}
+
+.save-button1 {
+  background-color: white;
+  color: #5A67D8;
+  border: 1px solid ghostwhite;
+  display: none;
+}
+
+.save-button1:hover {
+  background-color: #5A67D8;
+  color: white;
+  border-radius: 30px;
+  border: 1px solid #5A67D8;
+}
+
+.cancel-button {
+  background-color: white;
+  color: red;
+  border: 1px solid ghostwhite;
+  display: none;
+}
+
+.cancel-button:hover {
+  background-color: red;
+  color: white;
+  border-radius: 30px;
+  border: 1px solid red;
+}
+
+.ce-paragraph {
+  font-size: 18px;
+}
+
+.ce-editor {
+  font-size: 16.2px;
+  background-color: ghostwhite;
+}
+
+.ce-editor__header {
+  border-bottom: 1px solid #e8e8eb;
+  height: 50px;
+  line-height: 50px;
+  display: flex;
+  padding: 0 30px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.ce-editor__header a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ce-editor__header-logo {
+  font-weight: bold;
+}
+
+.ce-editor__header-menu {
+  margin-left: auto;
+}
+
+@media all and (max-width: 730px) {
+  .ce-editor__header-menu {
+    margin-left: 0;
+    margin-top: 10px;
+    flex-basis: 100%;
+    font-size: 14px;
+  }
+}
+
+.ce-editor__header-menu a {
+  margin-left: 20px;
+}
+
+@media all and (max-width: 730px) {
+  .ce-editor__header-menu a {
+    margin-left: 0;
+    margin-right: 15px;
+  }
+}
+
+.ce-editor__content {
+  background-color: #fff;
+  max-width: 900px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  border-radius: 15px;
+  border: 1px solid #e1e4e8;
+  padding: 20px 0;
+}
+
+.ce-editor__content--small {
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+
+@media all and (max-width: 730px) {
+
+  .ce-editor__header,
+  .ce-editor__content {
+    padding: 10px;
+    margin: 0 2%;
+  }
+}
+
+.ce-editor .ce-block:first-of-type h1.ce-header {
+  font-size: 3em;
+}
+
+.ce-editor h2.ce-header {
+  font-size: 2.5em;
+}
+
+.ce-editor h3.ce-header {
+  font-size: 2.17em;
+}
+
+.ce-editor h4.ce-header {
+  font-size: 2em;
+}
+
+.ce-editor h5.ce-header {
+  font-size: 1.83em;
+}
+
+.ce-editor h6.ce-header {
+  font-size: 1.67em;
+}
