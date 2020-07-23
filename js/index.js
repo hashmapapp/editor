@@ -41,6 +41,12 @@ const tools = {
     class: Paragraph,
     inlineToolbar: true,
   },
+  linkTool: {
+    class: LinkTool,
+    config: {
+      endpoint: process.env.LINK_PREVIEW_URL,
+    },
+  },
   // image: {
   //   class: ImageTool,
   //   config: {
@@ -52,7 +58,7 @@ const tools = {
   // },
 };
 
-const handleEditorJS = (event, postKey, data = {}) => {
+const handleEditorJS = (event, postKey, data) => {
   editor = new EditorJS({
     holder: "editorjs",
     data,
@@ -64,7 +70,7 @@ const handleEditorJS = (event, postKey, data = {}) => {
 };
 
 const handleEventSaveButton = (event, postKey) => {
-  console.log("Editor.js is ready to work!");
+  // console.log("Editor.js is ready to work!");
   const saveButton = document.getElementById("save-button");
   saveButton.addEventListener("click", () => {
     editor
@@ -92,19 +98,12 @@ const verifyUrl = () => {
   if (process.env.NODE_ENV === "development") {
     return event.origin.startsWith("http://localhost:4200");
   }
-  return (
-    event.origin.startsWith(process.env.PROD_DOMAIN) ||
-    event.origin.startsWith(process.env.STAGE_DOMAIN)
-  );
+  return event.origin.startsWith(process.env.DOMAIN);
 };
 
 const receiveMessage = (event) => {
   if (verifyUrl() && event.data && event.data.postKey) {
-    if (event.data.content) {
-      handleEditorJS(event, event.data.postKey, event.data.content);
-      return;
-    }
-    handleEditorJS(event, event.data.postKey);
+    handleEditorJS(event, event.data.postKey, event.data.content || {});
   }
 };
 
